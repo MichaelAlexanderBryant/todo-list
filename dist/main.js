@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log(\"testing\")\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("class todoItem {\n    constructor(project, title, description, dueDate, priority) {\n        this.project = project;\n        this.title = title;\n        this.description = description;\n        this.dueDate = dueDate;\n        this.priority = priority;\n    };\n};\n\nconst addTodo = document.getElementById(\"add-button\");\naddTodo.addEventListener(\"click\", () => {\n    console.log(\"event listener test\");\n});\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ })
 
