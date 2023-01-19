@@ -13,6 +13,10 @@ class todoList {
         this.allTodoItems = [];
     };
 
+    returnList() {
+        return this.allTodoItems;
+    };
+
     insertTodo(item) {
         this.allTodoItems.push(item);
     };
@@ -22,8 +26,14 @@ class todoList {
     };
 };
 
+const contentArea = document.getElementById("todo-list");
 function displayList(lst) {
-
+    contentArea.textContent = '';
+    for (let i = 0; i < lst.length; i++) {
+        let itemContainer = document.createElement('div');
+        itemContainer.textContent = lst[i].title;
+        contentArea.appendChild(itemContainer);
+    };
 };
 
 theList = new todoList();
@@ -52,7 +62,7 @@ submitButton.addEventListener("click", (event) => {
     document.querySelector("#priority").checked = false;
     let newTodo = new todoItem(newProject, newTitle, newDescription, newDueDate, newPriority);
     theList.insertTodo(newTodo);
-    console.log(theList);
+    displayList(theList.returnList());
     document.getElementById("blank").style.height = "0vh";
     document.getElementById("popupForm").style.display = "none";
 });
