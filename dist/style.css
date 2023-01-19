@@ -13,6 +13,25 @@ body {
     grid-row: 1 / 2;
     background-color: #db4d3e;
     color: #e89388;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header > #left-header-container {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+#header > #right-header-container {
+    padding-right: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+svg {
+    padding-left: 10px;
 }
 
 #content {
@@ -24,9 +43,19 @@ body {
 #content > #project-sidebar {
     grid-column: 1 / 2;
     background-color: #fafafa;
+    color: #6d6d6d;
+}
+
+#filter-container {
+    padding-left: 20px;
+}
+
+#content > #project-sidebar > .filter {
+    color: #5b5b5b;
 }
 
 #content > #todo-list {
     grid-column: 2 / 3;
     background-color: #fefefe;
+    color: #606060;
 }
