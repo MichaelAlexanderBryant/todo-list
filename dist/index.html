@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="blank"></div>
     <div id="container">
         <div id="header">
             <div id="left-header-container">
@@ -33,6 +34,49 @@
                 </div>
             </div>
             <div id="todo-list"></div>
+        </div>
+    </div>
+    <div class="popup-new-book">
+        <div class="formPopup" id="popupForm">
+          <form action="" class="formContainer">
+            <h1>Add New Todo Item</h1>
+            <div id="forms">
+              <div id="project-form">
+                <label for="project">
+                    <strong>Project</strong>
+                  </label>
+                <input type="text" id="project" name="project"/>
+              </div>
+              <div id="title-form">
+                <label for="title">
+                  <strong>Title</strong>
+                </label>
+                <input type="text" id="title" name="title" required/>
+              </div>
+              <div id="description-form">
+                <label for="description">
+                    <strong>Description</strong>
+                  </label>
+                  <textarea id="description" name="description" rows="4" cols="50"></textarea>
+              </div>
+              <div id="due-date-form">
+                <label for="due-date">
+                  <strong>Due Date</strong>
+                </label>
+                <input type="datetime" id="due-date" name="due-date" />
+              </div>
+              <div id="priority-form">
+                <label for="priority">
+                  <strong>Priority</strong>
+                </label>
+                <input type="checkbox" id="priority" name="priority" />
+              </div>
+            </div>
+            <div id="buttons">
+              <button type="submit" id="submit-button" class="btn">Add Todo</button>
+              <button type="button" id="cancel-button" class="btn cancel">Cancel</button>
+            </div>
+          </form>
         </div>
     </div>
     <script src="main.js"></script>

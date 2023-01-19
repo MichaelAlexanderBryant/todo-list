@@ -59,3 +59,64 @@ svg {
     background-color: #fefefe;
     color: #606060;
 }
+
+
+
+
+.popup-new-book {
+    /* position: relative; */
+    text-align: center;
+    width: 100%;
+  }
+  .formPopup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 50px;
+    max-width: auto;
+    /* padding: 20px; */
+    background-color: #fff;
+  }
+
+  .formContainer h1 {
+    margin-bottom: -10px;
+  }
+
+  #forms {
+    display:flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  #project-form, #title-form, #description-form, textarea, #due-date-form{
+    display:flex;
+    flex-direction: column;
+  }
+
+  .formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+  }
+  .formContainer .cancel {
+    background-color: #cc0000;
+  }
+  .formContainer .btn:hover,
+  .openButton:hover {
+    opacity: 1;
+  }
