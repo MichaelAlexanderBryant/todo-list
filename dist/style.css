@@ -102,6 +102,15 @@ svg#add-project {
   padding: 25px 15px;
 }
 
+.task-due-date {
+  color: #71b87d;
+}
+
+.urgent {
+  border: 1px solid #dd4c3d;
+  background-color: #dd4d3d38;
+}
+
 .checkbox {
   grid-column: 1 / 2;
 }
