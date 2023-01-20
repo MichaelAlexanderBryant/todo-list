@@ -26,6 +26,8 @@ class todoList {
     };
 };
 
+let projectList = [];
+
 const contentArea = document.getElementById("items");
 function displayList(lst) {
     contentArea.textContent = '';
@@ -52,6 +54,23 @@ function displayList(lst) {
         itemContainer.appendChild(infoDiv);
         itemContainer.appendChild(projectDiv);
         contentArea.appendChild(itemContainer);
+    };
+};
+
+const projectForm = document.getElementById("project");
+const projectSidebar = document.getElementById("project-list");
+function reviseProjectList() {
+    projectForm.textContent = '';
+    projectSidebar.textContent = '';
+    for (let i = 0; i < projectList.length; i++) {
+        let projectOption = document.createElement('option');
+        projectOption.value = projectList[i];
+        projectOption.textContent = projectList[i];
+        projectForm.appendChild(projectOption);
+
+        let projectItem = document.createElement('div');
+        projectItem.textContent = projectList[i];
+        projectSidebar.appendChild(projectItem);
     };
 };
 
@@ -95,4 +114,30 @@ cancelButton.addEventListener("click", () => {
     document.querySelector("#priority").checked = false;
     document.getElementById("blank").style.height = "0vh";
     document.getElementById("popupForm").style.display = "none";
+  });
+
+const addProjectButton = document.getElementById("projects-container");
+addProjectButton.addEventListener("click", () => {
+    document.getElementById("blank").style.height = "100vh";
+    document.getElementById("popupForm-project").style.display = "block";  
+  });
+
+const submitButtonProject = document.getElementById("submit-button-project");
+submitButtonProject.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (document.getElementById("project-name").value == '') {
+          return alert('Please include project name');
+      };
+      let newProjectName = document.getElementById("project-name-input").value;
+      document.getElementById("project-name-input").value = '';
+      projectList.push(newProjectName);
+      reviseProjectList();
+      document.getElementById("blank").style.height = "0vh";
+      document.getElementById("popupForm-project").style.display = "none";
+  });
+
+const cancelButtonProject = document.getElementById("cancel-button-project");
+cancelButtonProject.addEventListener("click", () => {
+    document.getElementById("blank").style.height = "0vh";
+    document.getElementById("popupForm-project").style.display = "none";
   });

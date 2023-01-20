@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="popup-new-book">
+    <div class="popup-new-item">
         <div class="formPopup" id="popupForm">
           <form action="" class="formContainer">
             <h1>Add New Todo Item</h1>
@@ -93,6 +93,24 @@
             </div>
           </form>
         </div>
+    </div>
+    <div class="popup-new-project">
+      <div class="formPopup" id="popupForm-project">
+        <form action="" class="formContainer">
+          <h1>Add New Project</h1>
+          <div id="forms-project">
+            <div id="project-name">
+              <label for="project-name">
+                  <strong>Project Name</strong>
+                </label>
+                <input type="text" id="project-name-input" name="project-name" required/>
+            </div>
+          <div id="buttons">
+            <button type="submit" id="submit-button-project" class="btn">Add Project</button>
+            <button type="button" id="cancel-button-project" class="btn cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
     <script src="main.js"></script>
 </body>
