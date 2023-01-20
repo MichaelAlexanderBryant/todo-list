@@ -26,12 +26,31 @@ class todoList {
     };
 };
 
-const contentArea = document.getElementById("todo-list");
+const contentArea = document.getElementById("items");
 function displayList(lst) {
     contentArea.textContent = '';
     for (let i = 0; i < lst.length; i++) {
         let itemContainer = document.createElement('div');
-        itemContainer.textContent = lst[i].title;
+        itemContainer.className = "item";
+        let checkboxInput = document.createElement('input');
+        checkboxInput.type = "checkbox";
+        checkboxInput.class = "checkbox";
+        checkboxInput.name = "checkbox";
+        let infoDiv = document.createElement('div');
+        let titleDiv = document.createElement('div');
+        titleDiv.className = "task-title";
+        titleDiv.textContent = lst[i].title;
+        let dueDateDiv = document.createElement('div');
+        dueDateDiv.className = "task-due-date";
+        dueDateDiv.textContent = lst[i].dueDate;
+        infoDiv.appendChild(titleDiv);
+        infoDiv.appendChild(dueDateDiv);
+        let projectDiv = document.createElement('div');
+        projectDiv.className = "task-project";
+        projectDiv.textContent = lst[i].project;
+        itemContainer.appendChild(checkboxInput);
+        itemContainer.appendChild(infoDiv);
+        itemContainer.appendChild(projectDiv);
         contentArea.appendChild(itemContainer);
     };
 };
