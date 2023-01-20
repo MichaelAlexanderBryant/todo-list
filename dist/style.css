@@ -1,18 +1,24 @@
+#blank {
+  background-color:#cccccc;
+}
+
 body {
     padding: 0;
     margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #container {
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 9fr;
+    grid-template-rows: 1fr 13fr;
+    font-size: 8px;
 }
 
 #header {
     grid-row: 1 / 2;
     background-color: #db4d3e;
-    color: #e89388;
+    color: #fcf3f3;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,11 +27,11 @@ body {
 #header > #left-header-container {
     display: flex;
     align-items: center;
-    padding-left: 20px;
+    padding-left: 40px;
 }
 
 #header > #right-header-container {
-    padding-right: 20px;
+    padding-right: 40px;
     font-size: 40px;
     font-weight: bold;
 }
@@ -34,28 +40,55 @@ svg#clipboard {
     padding-left: 10px;
 }
 
-#add-button:hover {
-  color: #8a5851;
+#add-button-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-#add-button:active {
-  color: #3f2825;
+#add-button-container:hover {
+  background-color: #b3abab6b;
+  border-radius: 5px;
 }
 
 #content {
     grid-row: 2 / 3;
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
+    color: #242424;
 }
 
 #content > #project-sidebar {
     grid-column: 1 / 2;
     background-color: #fafafa;
-    color: #6d6d6d;
+
 }
 
 #filter-container {
-    padding-left: 20px;
+  padding: 0px 20px;
+  font-size: 8px;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.filter {
+  flex: 1;
+  border-radius: 5px;
+  padding: 0px 20px;
+  /* border: 1px solid black; */
+}
+
+.day {
+  padding: 10px 20px;
+}
+
+.filter:hover, .project-list-item:hover {
+  background-color: #cccccc;
+}
+
+#add-projects-header {
+  padding-left: 10px;
 }
 
 #projects-container {
@@ -63,43 +96,55 @@ svg#clipboard {
   align-items: center;
 }
 
-#projects-container:hover {
-  color: #494949;
-}
-
-#projects-container:active {
-  color: #242424;
-}
-
-svg#add-project {
-  padding-right: 10px;
-}
-
-#content > #project-sidebar > .filter {
-    color: #5b5b5b;
+#add-project {
+  display: flex;
+  align-items: center;
 }
 
 #project-list {
-  font-size: 20px;
-  padding-left: 35px;
+  font-size: 12px;
+  padding: 10px 0px 0px 0px;
+  border-radius: 5px;
+}
+
+.project-list-item {
+  padding: 10px 0px 10px 55px;
+  border-radius: 5px;
+  display:flex;
+  align-items: center;
 }
 
 #content > #todo-list {
     grid-column: 2 / 3;
     background-color: #fefefe;
-    color: #606060;
+    color: #242424;
+    display: flex;
+    justify-content: center;
 }
 
 #filter {
-  padding: 25px 0px 25px 50px ;
-  font-size: 40px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#filter > div {
+  padding: 25px 45px 0px 25px ;
+}
+
+/* #todo-list {
+
+} */
+
+#todo-list-container {
+  width: 60%;
 }
 
 .item {
   display:grid;
   border-bottom: 1px solid #b2b7b6;
-  grid-template-columns: 1fr 10fr 1fr;
-  padding: 25px 15px;
+  grid-template-columns: 1fr 9fr 1fr;
+  padding: 25px 0px;
+  font-size: 12px;
 }
 
 .task-due-date {

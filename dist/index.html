@@ -13,13 +13,13 @@
         <div id="header">
             <div id="left-header-container">
                 <h1>Your Todo List</h1>
-                <svg id="clipboard" style="width:auto;height:50px" viewBox="0 0 24 24">
+                <svg id="clipboard" style="width:auto;height:30px" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M19 3H14.82C14.4 1.84 13.3 1 12 1S9.6 1.84 9.18 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M12 3C12.55 3 13 3.45 13 4S12.55 5 12 5 11 4.55 11 4 11.45 3 12 3M7 7H17V5H19V19H5V5H7V7M12 17V15H17V17H12M12 11V9H17V11H12M8 12V9H7V8H9V12H8M9.25 14C9.66 14 10 14.34 10 14.75C10 14.95 9.92 15.14 9.79 15.27L8.12 17H10V18H7V17.08L9 15H7V14H9.25" />
                 </svg>
             </div>
             <div id="right-header-container">
-                <div id="add-button">
-                    <svg id="add-button" style="width:auto;height:50px" viewBox="0 0 24 24">
+                <div id="add-button-container">
+                    <svg id="add-button" style="width:auto;height:30px" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M13,7H11V11H7V13H11V17H13V13H17V11H13V7Z" />
                     </svg>
                 </div>
@@ -28,24 +28,27 @@
         <div id="content">
             <div id="project-sidebar">
                 <div id="filter-container">
-                    <h2 class="filter">All</h2>
-                    <h2 class="filter">Today</h2>
-                    <h2 class="filter">Week</h2>
+                    <h2 class="filter day">All</h2>
+                    <h2 class="filter day">Today</h2>
+                    <h2 class="filter day">Week</h2>
                     <div id="projects">
                         <div id="projects-container">
-                          <div id="add-project"><svg id="add-project" style="width:24px;height:24px" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+                          <div class="filter" id="add-project">
+                            <svg id="add-project" style="width:24px;height:24px" viewBox="0 0 24 24">
+                              <path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
                             </svg>
+                            <h2 id="add-projects-header">Projects</h2>
                           </div>
-                          <h2 class="filter">Projects</h2>
                         </div>
                         <div id="project-list"></div>
                     </div>
                 </div>
             </div>
             <div id="todo-list">
-              <div id="filter"><span>All</span></div>
-              <div id="items"></div>
+              <div id="todo-list-container">
+                <div id="filter"><div>All</div></div>
+                <div id="items"></div>
+              </div>
             </div>
         </div>
     </div>

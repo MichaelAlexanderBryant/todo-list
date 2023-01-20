@@ -78,7 +78,10 @@ function reviseProjectList() {
 
         if (projectList[i] != "N/A") {
             let projectItem = document.createElement('div');
-            projectItem.textContent = projectList[i];
+            let projectItemSpan = document.createElement('span');
+            projectItem.className = "project-list-item";
+            projectItemSpan.textContent = projectList[i];
+            projectItem.appendChild(projectItemSpan);
             projectSidebar.appendChild(projectItem);
         };
     };
@@ -91,6 +94,7 @@ theList = new todoList();
 
 const addTodo = document.getElementById("add-button");
 addTodo.addEventListener("click", () => {
+    document.getElementById("container").style.display= "none";
     document.getElementById("blank").style.height = "100vh";
     document.getElementById("popupForm").style.display = "block";
 });
@@ -114,6 +118,7 @@ submitButton.addEventListener("click", (event) => {
     let newTodo = new todoItem(newProject, newTitle, newDescription, newDueDate, newPriority);
     theList.insertTodo(newTodo);
     displayList(theList.returnList());
+    document.getElementById("container").style.display= "grid";
     document.getElementById("blank").style.height = "0vh";
     document.getElementById("popupForm").style.display = "none";
 });
@@ -125,12 +130,14 @@ cancelButton.addEventListener("click", () => {
     document.getElementById("description").value = '';
     document.getElementById("due-date").value = '';
     document.querySelector("#priority").checked = false;
+    document.getElementById("container").style.display= "grid";
     document.getElementById("blank").style.height = "0vh";
     document.getElementById("popupForm").style.display = "none";
   });
 
 const addProjectButton = document.getElementById("projects-container");
 addProjectButton.addEventListener("click", () => {
+    document.getElementById("container").style.display= "none";
     document.getElementById("blank").style.height = "100vh";
     document.getElementById("popupForm-project").style.display = "block";  
   });
@@ -145,12 +152,14 @@ submitButtonProject.addEventListener("click", (event) => {
       document.getElementById("project-name-input").value = '';
       projectList.push(newProjectName);
       reviseProjectList();
+      document.getElementById("container").style.display= "grid";
       document.getElementById("blank").style.height = "0vh";
       document.getElementById("popupForm-project").style.display = "none";
   });
 
 const cancelButtonProject = document.getElementById("cancel-button-project");
 cancelButtonProject.addEventListener("click", () => {
+    document.getElementById("container").style.display= "grid";
     document.getElementById("blank").style.height = "0vh";
     document.getElementById("popupForm-project").style.display = "none";
   });
