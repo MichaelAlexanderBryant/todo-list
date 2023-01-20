@@ -26,7 +26,7 @@ class todoList {
     };
 };
 
-let projectList = [];
+let projectList = ["N/A"];
 
 const contentArea = document.getElementById("items");
 function displayList(lst) {
@@ -49,7 +49,11 @@ function displayList(lst) {
         infoDiv.appendChild(dueDateDiv);
         let projectDiv = document.createElement('div');
         projectDiv.className = "task-project";
-        projectDiv.textContent = lst[i].project;
+        if (lst[i].project != "N/A") {
+            projectDiv.textContent = lst[i].project;
+        } else {
+            projectDiv.textContent = "";
+        };
         itemContainer.appendChild(checkboxInput);
         itemContainer.appendChild(infoDiv);
         itemContainer.appendChild(projectDiv);
@@ -68,11 +72,16 @@ function reviseProjectList() {
         projectOption.textContent = projectList[i];
         projectForm.appendChild(projectOption);
 
-        let projectItem = document.createElement('div');
-        projectItem.textContent = projectList[i];
-        projectSidebar.appendChild(projectItem);
+        if (projectList[i] != "N/A") {
+            let projectItem = document.createElement('div');
+            projectItem.textContent = projectList[i];
+            projectSidebar.appendChild(projectItem);
+        };
     };
+    document.getElementById("project").value = '';
 };
+
+reviseProjectList();
 
 theList = new todoList();
 
