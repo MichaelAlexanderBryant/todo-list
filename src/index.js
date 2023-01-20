@@ -125,7 +125,7 @@ addProjectButton.addEventListener("click", () => {
 const submitButtonProject = document.getElementById("submit-button-project");
 submitButtonProject.addEventListener("click", (event) => {
       event.preventDefault();
-      if (document.getElementById("project-name").value == '') {
+      if (document.getElementById("project-name-input").value == '') {
           return alert('Please include project name');
       };
       let newProjectName = document.getElementById("project-name-input").value;
