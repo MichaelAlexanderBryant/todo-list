@@ -107,7 +107,7 @@ svg#add-project {
 }
 
 .urgent {
-  border: 1px solid #dd4c3d;
+  border-bottom: 1px solid #dd4c3d;
   background-color: #dd4d3d38;
 }
 
