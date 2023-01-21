@@ -1,6 +1,7 @@
 function displayList(lst) {
     const contentArea = document.getElementById("items");
     contentArea.textContent = '';
+    lst.sort(function(a,b){return new Date(a.dueDate) - new Date(b.dueDate);});
     for (let i = 0; i < lst.length; i++) {
         let itemContainer = document.createElement('div');
         itemContainer.className = "item";
@@ -39,6 +40,7 @@ function reviseProjectList(projectList) {
     const projectSidebar = document.getElementById("project-list");
     projectForm.textContent = '';
     projectSidebar.textContent = '';
+    projectList.sort();
     for (let i = 0; i < projectList.length; i++) {
         let projectOption = document.createElement('option');
         projectOption.value = projectList[i];
