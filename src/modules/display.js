@@ -1,7 +1,37 @@
 function displayList(lst) {
     const contentArea = document.getElementById("items");
     contentArea.textContent = '';
-    lst.sort(function(a,b){return new Date(a.dueDate) - new Date(b.dueDate);});
+    if (lst.length > 1) {
+        lst.sort(function(a,b){return new Date(a.dueDate) - new Date(b.dueDate);});
+    };
+
+    const currentFilter = document.getElementById('filter-text').textContent;
+    if (lst.length > 0) {
+        if (currentFilter == "Today") {
+            let currentDate = new Date();
+            lst = lst.filter(d => {
+                let day = d.dueDate.substring(8,10);
+                let month = d.dueDate.substring(5,7);
+                let year = d.dueDate.substring(0,4);
+                return ((currentDate.getDate() == +day) && (currentDate.getMonth() == +month-1) && (currentDate.getFullYear() == +year));
+            });
+        } else if (currentFilter == "Week") {
+            const oneWeekMilliseconds = 6.048e+8
+            let currentDate = new Date();
+            let currentDay = currentDate.getDate();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            currentDate = new Date(currentYear, currentMonth, currentDay).getTime();
+            let oneWeekAheadDate = new Date(currentDate + oneWeekMilliseconds).getTime();
+            lst = lst.filter(d => {
+                let day = d.dueDate.substring(8,10);
+                let month = d.dueDate.substring(5,7);
+                let year = d.dueDate.substring(0,4);
+                let time = new Date(+year, +month-1, +day).getTime();
+                return ((currentDate <= time) && (oneWeekAheadDate >= time));
+            });
+        };
+    };
     for (let i = 0; i < lst.length; i++) {
         let itemContainer = document.createElement('div');
         itemContainer.className = "item";
