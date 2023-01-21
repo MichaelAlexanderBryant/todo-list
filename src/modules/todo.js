@@ -11,6 +11,7 @@ class todoItem {
 class todoList {
     constructor() {
         this.allTodoItems = [];
+        this.allProjects = ["N/A"];
     };
 
     returnList() {
@@ -19,6 +20,18 @@ class todoList {
 
     insertTodo(item) {
         this.allTodoItems.push(item);
+    };
+
+    returnProjects() {
+        return this.allProjects;
+    };
+
+    insertProject(project) {
+        this.allProjects.push(project);
+    };
+
+    sortProjects() {
+        this.allProjects.sort();
     };
 };
 

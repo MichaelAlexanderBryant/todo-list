@@ -33,4 +33,15 @@ function initializeFilters(lst) {
     });
 };
 
-export {initializeFilters};
+function resetFilterToAll(lst) {
+    const filterDisplay = document.getElementById('filter');
+    const all = document.getElementById('all');
+    filterDisplay.textContent = '';
+    let allDiv = document.createElement('div');
+    allDiv.id = 'filter-text'
+    allDiv.textContent = 'All';
+    filterDisplay.appendChild(allDiv);
+    displayList(lst.returnList());
+};
+
+export {initializeFilters, resetFilterToAll};

@@ -1,6 +1,10 @@
+import { resetFilterToAll } from "./change-filter";
+
 function displayList(lst) {
     const contentArea = document.getElementById("items");
     contentArea.textContent = '';
+
+    console.log(arguments);
     if (lst.length > 1) {
         lst.sort(function(a,b){return new Date(a.dueDate) - new Date(b.dueDate);});
     };
@@ -10,8 +14,8 @@ function displayList(lst) {
             lst = lst.filter(d => {
                 return (d.project == arguments[1]);
             });
-        };
-        if (currentFilter == "Today") {
+        }
+        else if (currentFilter == "Today") {
             let currentDate = new Date();
             lst = lst.filter(d => {
                 let day = d.dueDate.substring(8,10);
@@ -69,25 +73,25 @@ function displayList(lst) {
     };
 };
 
-function reviseProjectList(projectList) {
+function displayProjects(lst) {
     const projectForm = document.getElementById("project");
     const projectSidebar = document.getElementById("project-list");
     projectForm.textContent = '';
     projectSidebar.textContent = '';
-    projectList.sort();
-    for (let i = 0; i < projectList.length; i++) {
+    lst.sortProjects();
+    for (let i = 0; i < lst.returnProjects().length; i++) {
         let projectOption = document.createElement('option');
-        projectOption.value = projectList[i];
-        projectOption.textContent = projectList[i];
+        projectOption.value = lst.returnProjects()[i];
+        projectOption.textContent = lst.returnProjects()[i];
         projectForm.appendChild(projectOption);
-
-        if (projectList[i] != "N/A") {
+        if (lst.returnProjects()[i] != "N/A") {
             let projectItem = document.createElement('div');
             let projectItemSpan = document.createElement('span');
             projectItem.className = "project-list-item";
-            projectItemSpan.textContent = projectList[i];
+            projectItemSpan.textContent = lst.returnProjects()[i];
             projectItem.addEventListener("click", () => {
-                // Figure out how to pass the list of todo items.
+                resetFilterToAll(lst);
+                displayList(lst.returnList(), lst.returnProjects()[i]);
             });
             projectItem.appendChild(projectItemSpan);
             projectSidebar.appendChild(projectItem);
@@ -96,4 +100,4 @@ function reviseProjectList(projectList) {
     document.getElementById("project").value = '';
 };
 
-export {displayList, reviseProjectList};
+export {displayList, displayProjects};

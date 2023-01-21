@@ -1,6 +1,6 @@
-import { reviseProjectList } from "./display";
+import { displayProjects } from "./display";
 
-function initializeProjectForm(projectList) {
+function initializeProjectForm(lst) {
     const addProjectButton = document.getElementById("projects-container");
     addProjectButton.addEventListener("click", () => {
         document.getElementById("container").style.display= "none";
@@ -16,8 +16,8 @@ function initializeProjectForm(projectList) {
         };
         let newProjectName = document.getElementById("project-name-input").value;
         document.getElementById("project-name-input").value = '';
-        projectList.push(newProjectName);
-        reviseProjectList(projectList);
+        lst.insertProject(newProjectName);
+        displayProjects(lst);
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm-project").style.display = "none";
