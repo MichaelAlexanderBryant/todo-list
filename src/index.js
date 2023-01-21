@@ -6,8 +6,8 @@ import { initializeFilters } from "./modules/change-filter";
 
 
 let projectList = ["N/A"];
-reviseProjectList(projectList);
 let theList = new todoList();
+reviseProjectList(projectList);
 initializeTodoForm(theList);
 initializeProjectForm(projectList);
 initializeFilters(theList);

@@ -4,9 +4,13 @@ function displayList(lst) {
     if (lst.length > 1) {
         lst.sort(function(a,b){return new Date(a.dueDate) - new Date(b.dueDate);});
     };
-
     const currentFilter = document.getElementById('filter-text').textContent;
     if (lst.length > 0) {
+        if (!(arguments[1] == undefined)) {
+            lst = lst.filter(d => {
+                return (d.project == arguments[1]);
+            });
+        };
         if (currentFilter == "Today") {
             let currentDate = new Date();
             lst = lst.filter(d => {
@@ -82,6 +86,9 @@ function reviseProjectList(projectList) {
             let projectItemSpan = document.createElement('span');
             projectItem.className = "project-list-item";
             projectItemSpan.textContent = projectList[i];
+            projectItem.addEventListener("click", () => {
+                // Figure out how to pass the list of todo items.
+            });
             projectItem.appendChild(projectItemSpan);
             projectSidebar.appendChild(projectItem);
         };
