@@ -1,4 +1,5 @@
 import { todoItem } from "./todo";
+import { displayList } from "./display";
 
 function initializeTodoForm(theList) {
     const addTodo = document.getElementById("add-button");

@@ -27,7 +27,6 @@ function displayList(lst) {
         if (lst[i].priority == true) {
             itemContainer.className = 'item urgent';
         };
-        console.log(lst[i].priority);
         itemContainer.appendChild(checkboxInput);
         itemContainer.appendChild(infoDiv);
         itemContainer.appendChild(projectDiv);

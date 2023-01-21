@@ -17,7 +17,7 @@ function initializeProjectForm(projectList) {
         let newProjectName = document.getElementById("project-name-input").value;
         document.getElementById("project-name-input").value = '';
         projectList.push(newProjectName);
-        reviseProjectList();
+        reviseProjectList(projectList);
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm-project").style.display = "none";
