@@ -33,15 +33,14 @@ function initializeFilters(lst) {
     });
 };
 
-function resetFilterToAll(lst) {
+function setFilterToProject(lst, project) {
     const filterDisplay = document.getElementById('filter');
-    const all = document.getElementById('all');
     filterDisplay.textContent = '';
-    let allDiv = document.createElement('div');
-    allDiv.id = 'filter-text'
-    allDiv.textContent = 'All';
-    filterDisplay.appendChild(allDiv);
+    let projectDiv = document.createElement('div');
+    projectDiv.id = 'filter-text'
+    projectDiv.textContent = project;
+    filterDisplay.appendChild(projectDiv);
     displayList(lst.returnList());
 };
 
-export {initializeFilters, resetFilterToAll};
+export {initializeFilters, setFilterToProject};

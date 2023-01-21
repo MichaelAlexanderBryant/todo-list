@@ -1,4 +1,4 @@
-import { resetFilterToAll } from "./change-filter";
+import { setFilterToProject } from "./change-filter";
 
 function displayList(lst) {
     const contentArea = document.getElementById("items");
@@ -90,7 +90,7 @@ function displayProjects(lst) {
             projectItem.className = "project-list-item";
             projectItemSpan.textContent = lst.returnProjects()[i];
             projectItem.addEventListener("click", () => {
-                resetFilterToAll(lst);
+                setFilterToProject(lst, lst.returnProjects()[i]);
                 displayList(lst.returnList(), lst.returnProjects()[i]);
             });
             projectItem.appendChild(projectItemSpan);
