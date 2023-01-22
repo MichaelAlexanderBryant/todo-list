@@ -22,6 +22,14 @@ class todoList {
         this.allTodoItems.push(item);
     };
 
+    deleteTodo(item) {
+        for (let i = 0; i < this.allTodoItems.length; i++) {
+            if (this.allTodoItems[i] == item) {
+                this.allTodoItems.splice(i,1);
+            };
+        };
+    };
+
     modifyTodo(item, newItem) {
         for (let i = 0; i < this.allTodoItems.length; i++) {
             if (this.allTodoItems[i] == item) {

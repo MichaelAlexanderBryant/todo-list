@@ -68,19 +68,23 @@ function viewDetails(obj, todo) {
     todoDetailContainer.appendChild(dateContainer);
     todoDetailContainer.appendChild(priorityContainer);
 
-    const submit_edit_buttons = document.getElementById("buttons-todo-edit-submit");
-    const edit_button = document.createElement('button');
-    edit_button.id = 'edit-todo';
-    edit_button.textContent = "Edit";
-    const close_button = document.createElement('button');
-    close_button.id = 'close-todo';
-    close_button.textContent = "Close";
+    const buttons = document.getElementById("buttons-todo-edit-submit");
+    const editButton = document.createElement('button');
+    editButton.id = 'edit-todo';
+    editButton.textContent = "Edit";
+    const deleteButton = document.createElement('button');
+    deleteButton.id = 'delete-todo';
+    deleteButton.textContent = "Delete";
+    const closeButton = document.createElement('button');
+    closeButton.id = 'close-todo';
+    closeButton.textContent = "Close";
 
-    submit_edit_buttons.appendChild(edit_button);
-    submit_edit_buttons.appendChild(close_button);
+    buttons.appendChild(editButton);
+    buttons.appendChild(deleteButton);
+    buttons.appendChild(closeButton);
 
-    edit_button.addEventListener("click", () => {
-        submit_edit_buttons.textContent = '';
+    editButton.addEventListener("click", () => {
+        buttons.textContent = '';
         todoDetailContainer.textContent = '';
 
         let form = document.createElement('form');
@@ -173,17 +177,17 @@ function viewDetails(obj, todo) {
         todoDetailContainer.appendChild(form);
         
 
-        const submit_button = document.createElement('button');
-        submit_button.id = 'submit-edit';
-        submit_button.textContent = 'Submit';
-        const cancel_button = document.createElement('button');
-        cancel_button.id = 'cancel_edit';
-        cancel_button.textContent = 'Cancel';
-        submit_edit_buttons.appendChild(submit_button);
-        submit_edit_buttons.appendChild(cancel_button);
+        const submitButton = document.createElement('button');
+        submitButton.id = 'submit-edit';
+        submitButton.textContent = 'Submit';
+        const cancelButton = document.createElement('button');
+        cancelButton.id = 'cancel_edit';
+        cancelButton.textContent = 'Cancel';
+        buttons.appendChild(submit_button);
+        buttons.appendChild(cancel_button);
 
-        submit_button.addEventListener("click", () => {
-            submit_edit_buttons.textContent = '';
+        submitButton.addEventListener("click", () => {
+            buttons.textContent = '';
             todoDetailContainer.textContent = '';
             let todoEditData = new FormData(form);
             let newProject = todoEditData.get('project');
@@ -197,16 +201,27 @@ function viewDetails(obj, todo) {
             viewDetails(obj, todoEdit);
         });
     
-        cancel_button.addEventListener("click", () => {
-            submit_edit_buttons.textContent = '';
+        cancelButton.addEventListener("click", () => {
+            buttons.textContent = '';
             todoDetailContainer.textContent = '';
             viewDetails(obj, todo);
         });
 
     });
 
-    close_button.addEventListener("click", () => {
-        submit_edit_buttons.textContent = '';
+    deleteButton.addEventListener("click", () => {
+        buttons.textContent = '';
+        todoDetailContainer.textContent = '';
+        obj.deleteTodo(todo);
+        displayList(obj, obj.returnList());
+        document.getElementById("container").style.display= "grid";
+        document.getElementById("blank").style.height = "0vh";
+        document.getElementById("popupForm-todo-detail").style.display = "none";
+
+    })
+
+    closeButton.addEventListener("click", () => {
+        buttons.textContent = '';
         todoDetailContainer.textContent = '';
         displayList(obj, obj.returnList());
         document.getElementById("container").style.display= "grid";
