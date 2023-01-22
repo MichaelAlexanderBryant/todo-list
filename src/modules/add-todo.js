@@ -34,7 +34,7 @@ function initializeTodoForm(theList) {
         document.querySelector("#priority").checked = false;
         let newTodo = new todoItem(newProject, newTitle, newDescription, newDueDate, newPriority);
         theList.insertTodo(newTodo);
-        displayList(theList.returnList());
+        displayList(theList, theList.returnList());
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm").style.display = "none";

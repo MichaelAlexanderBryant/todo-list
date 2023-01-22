@@ -1,7 +1,7 @@
 import { setFilterToProject } from "./change-filter";
 import { viewDetails } from "./view-todo";
 
-function displayList(lst) {
+function displayList(obj, lst) {
     const contentArea = document.getElementById("items");
     contentArea.textContent = '';
     if (lst.length > 1) {
@@ -9,7 +9,7 @@ function displayList(lst) {
     };
     const currentFilter = document.getElementById('filter-text').textContent;
     if (lst.length > 0) {
-        if (!(arguments[1] == undefined)) {
+        if (!(arguments[2] == undefined)) {
             lst = lst.filter(d => {
                 return (d.project == arguments[1]);
             });
@@ -48,7 +48,7 @@ function displayList(lst) {
         checkboxInput.name = "checkbox";
         let infoDiv = document.createElement('div');
         infoDiv.addEventListener("click", () => {
-            viewDetails(lst[i]);
+            viewDetails(obj, lst[i]);
         });
         let titleDiv = document.createElement('div');
         titleDiv.className = "task-title";
@@ -93,7 +93,7 @@ function displayProjects(lst) {
             projectItemSpan.textContent = lst.returnProjects()[i];
             projectItem.addEventListener("click", () => {
                 setFilterToProject(lst, lst.returnProjects()[i]);
-                displayList(lst.returnList(), lst.returnProjects()[i]);
+                displayList(lst, lst.returnList(), lst.returnProjects()[i]);
             });
             projectItem.appendChild(projectItemSpan);
             projectSidebar.appendChild(projectItem);

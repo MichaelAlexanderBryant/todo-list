@@ -1,8 +1,4 @@
-function initializeViewTodo(lst) {
-
-}
-
-function viewDetails(todo) {
+function viewDetails(lst, todo) {
     document.getElementById("container").style.display= "none";
     document.getElementById("blank").style.height = "100vh";
     document.getElementById("popupForm-todo-detail").style.display = "block";
@@ -94,12 +90,12 @@ function viewDetails(todo) {
 
         submit_button.addEventListener("click", () => {
             submit_edit_buttons.textContent = '';
-            viewDetails(todo);
+            viewDetails(lst, todo);
         });
     
         cancel_button.addEventListener("click", () => {
             submit_edit_buttons.textContent = '';
-            viewDetails(todo);
+            viewDetails(lst, todo);
         });
 
     });
@@ -113,4 +109,4 @@ function viewDetails(todo) {
     });
 };
 
-export {initializeViewTodo, viewDetails};
+export {viewDetails};
