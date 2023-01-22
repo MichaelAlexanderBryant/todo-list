@@ -1,7 +1,14 @@
 
 function initializeViewTodo(lst) {
+    const submit_edit_buttons = document.getElementById("buttons-todo-edit-submit");
+    submit_edit_buttons.style.display = 'none';
+    const edit_buttons = document.getElementById('buttons-todo-edit');
+
     const edit = document.getElementById('edit-button-todo-detail');
     edit.addEventListener("click", () => {
+        submit_edit_buttons.style.display = 'block';
+        edit_buttons.style.display = 'none';
+        
         let project = document.getElementById("todo-project-info");
         let title = document.getElementById("todo-title-info");
         let description = document.getElementById("todo-description-info");
@@ -23,7 +30,6 @@ function initializeViewTodo(lst) {
             projectOption.value = lst.returnProjects()[i];
             projectOption.textContent = lst.returnProjects()[i];
             projectEdit.appendChild(projectOption);
-            console.log(projectOption);
         };
         projectEdit.name = 'project-edited'
         projectEdit.value = projectText;
@@ -67,19 +73,29 @@ function initializeViewTodo(lst) {
         priorityForm.appendChild(priorityEdit);
         priority.appendChild(priorityForm);
     });
-    const close = document.getElementById('cancel-button-todo-detail');
+    const close = document.getElementById('close-button-todo-detail');
     close.addEventListener("click", () => {
         document.getElementById("todo-project").textContent = '';
         document.getElementById("todo-title").textContent = '';
         document.getElementById("todo-description").textContent = '';
         document.getElementById("todo-date").textContent = '';
         document.getElementById("todo-priority").textContent = '';
-
-
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm-todo-detail").style.display = "none";
-    })
+    });
+
+    const submit_edit = document.getElementById("submit-button-todo-detail");
+    submit_edit.addEventListener("click", () => {
+        submit_edit_buttons.style.display = 'none';
+        edit_buttons.style.display = 'block';
+    });
+
+    const cancel_edit = document.getElementById("cancel-button-todo-detail");
+    cancel_edit.addEventListener("click", () => {
+        submit_edit_buttons.style.display = 'none';
+        edit_buttons.style.display = 'block';
+    });
 }
 
 function viewDetails(todo) {
@@ -135,8 +151,6 @@ function viewDetails(todo) {
     dateContainer.appendChild(dateInfo);
     priorityContainer.appendChild(priorityHeader);
     priorityContainer.appendChild(priorityInfo);
-
-
 };
 
 export {initializeViewTodo, viewDetails};
