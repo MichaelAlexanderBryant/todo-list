@@ -232,19 +232,15 @@ svg#clipboard {
 
   
 
-  #todo-detail-container {
+  #todo-detail-container, #todo-item-edit-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px;
     gap: 50px;
     max-width: auto;
-    /* padding: 20px; */
     background-color: #fff;
   }
-
-  /* #todo-project, #todo-title, #todo-description, #todo-date, #todo-priority {
-  } */
 
   #todo-project-header, #todo-title-header, #todo-description-header, #todo-date-header, #todo-priority-header {
     font-weight: bold;
@@ -252,4 +248,9 @@ svg#clipboard {
 
   #buttons-todo-edit-submit, #buttons-todo-edit {
     background-color: white;
+  }
+
+  .form-edit {
+    display: flex;
+    flex-direction: column;
   }

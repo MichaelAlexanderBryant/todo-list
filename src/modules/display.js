@@ -11,7 +11,7 @@ function displayList(obj, lst) {
     if (lst.length > 0) {
         if (!(arguments[2] == undefined)) {
             lst = lst.filter(d => {
-                return (d.project == arguments[1]);
+                return (d.project == arguments[2]);
             });
         }
         else if (currentFilter == "Today") {
@@ -75,25 +75,25 @@ function displayList(obj, lst) {
     };
 };
 
-function displayProjects(lst) {
+function displayProjects(obj) {
     const projectForm = document.getElementById("project");
     const projectSidebar = document.getElementById("project-list");
     projectForm.textContent = '';
     projectSidebar.textContent = '';
-    lst.sortProjects();
-    for (let i = 0; i < lst.returnProjects().length; i++) {
+    obj.sortProjects();
+    for (let i = 0; i < obj.returnProjects().length; i++) {
         let projectOption = document.createElement('option');
-        projectOption.value = lst.returnProjects()[i];
-        projectOption.textContent = lst.returnProjects()[i];
+        projectOption.value = obj.returnProjects()[i];
+        projectOption.textContent = obj.returnProjects()[i];
         projectForm.appendChild(projectOption);
-        if (lst.returnProjects()[i] != "N/A") {
+        if (obj.returnProjects()[i] != "N/A") {
             let projectItem = document.createElement('div');
             let projectItemSpan = document.createElement('span');
             projectItem.className = "project-list-item";
-            projectItemSpan.textContent = lst.returnProjects()[i];
+            projectItemSpan.textContent = obj.returnProjects()[i];
             projectItem.addEventListener("click", () => {
-                setFilterToProject(lst, lst.returnProjects()[i]);
-                displayList(lst, lst.returnList(), lst.returnProjects()[i]);
+                setFilterToProject(obj, obj.returnProjects()[i]);
+                displayList(obj, obj.returnList(), obj.returnProjects()[i]);
             });
             projectItem.appendChild(projectItemSpan);
             projectSidebar.appendChild(projectItem);

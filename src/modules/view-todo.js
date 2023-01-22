@@ -1,4 +1,6 @@
-function viewDetails(lst, todo) {
+import { todoItem } from "./todo";
+
+function viewDetails(obj, todo) {
     document.getElementById("container").style.display= "none";
     document.getElementById("blank").style.height = "100vh";
     document.getElementById("popupForm-todo-detail").style.display = "block";
@@ -79,6 +81,93 @@ function viewDetails(lst, todo) {
     edit_button.addEventListener("click", () => {
         submit_edit_buttons.textContent = '';
         todoDetailContainer.textContent = '';
+
+        let form = document.createElement('form');
+        form.id = "todo-item-edit-form"
+
+        // Project Input
+        let projectContainer = document.createElement('div');
+        projectContainer.className = "form-edit" 
+        let projectLabel = document.createElement('label');
+        projectLabel.for = 'project-input';
+        projectLabel.textContent = 'Project';
+        projectLabel.style.fontWeight = 'bold';
+        let projectSelect = document.createElement('select');
+        projectSelect.id = 'project-input'
+        projectSelect.value = todo.project;
+        for (let i = 0; i < obj.returnProjects().length; i++) {
+            let projectOption = document.createElement('option');
+            projectOption.value = obj.returnProjects()[i]
+            projectOption.textContent = obj.returnProjects()[i]
+            projectSelect.appendChild(projectOption)
+        };
+        projectContainer.appendChild(projectLabel);
+        projectContainer.appendChild(projectSelect);
+        form.appendChild(projectContainer);
+
+        // Title Input
+        let titleContainer = document.createElement('div');
+        titleContainer.className = "form-edit";
+        let titleLabel = document.createElement('label');
+        titleLabel.for = 'title-input';
+        titleLabel.textContent = 'Title';
+        titleLabel.style.fontWeight = 'bold';
+        let titleInput = document.createElement('input');
+        titleInput.type = 'text';
+        titleInput.id = 'title-input'
+        titleInput.value = todo.title;
+        titleContainer.appendChild(titleLabel);
+        titleContainer.appendChild(titleInput);
+        form.appendChild(titleContainer);
+
+        // Description Input
+        let descriptionContainer = document.createElement('div');
+        descriptionContainer.className = "form-edit" ;
+        let descriptionLabel = document.createElement('label');
+        descriptionLabel.for = 'description-input';
+        descriptionLabel.textContent = 'Description'
+        descriptionLabel.style.fontWeight = 'bold';
+        let descriptionInput = document.createElement('input');
+        descriptionInput.type = 'textarea';
+        descriptionInput.id = 'description-input'
+        descriptionInput.value = todo.description;
+        descriptionContainer.appendChild(descriptionLabel);
+        descriptionContainer.appendChild(descriptionInput);
+        form.appendChild(descriptionContainer);
+
+        // Date Input
+        let dateContainer = document.createElement('div');
+        dateContainer.className = "form-edit";
+        let dateLabel = document.createElement('label');
+        dateLabel.for = 'date-input';
+        dateLabel.textContent = 'Date'
+        dateLabel.style.fontWeight = 'bold';
+        let dateInput = document.createElement('input');
+        dateInput.type = 'date';
+        dateInput.id = 'date-input'
+        dateInput.value = todo.dueDate;
+        dateContainer.appendChild(dateLabel);
+        dateContainer.appendChild(dateInput);
+        form.appendChild(dateContainer);
+
+        // Priority Input
+        let priorityContainer = document.createElement('div');
+        priorityContainer.className = "form-edit";
+        let priorityLabel = document.createElement('label');
+        priorityLabel.for = 'priority-input';
+        priorityLabel.textContent = 'Priority'
+        priorityLabel.style.fontWeight = 'bold';
+        let priorityInput = document.createElement('input');
+        priorityInput.type = 'checkbox';
+        priorityInput.id = 'priority-input'
+        priorityInput.checked = todo.priority;
+        priorityContainer.appendChild(priorityLabel);
+        priorityContainer.appendChild(priorityInput);
+        form.appendChild(priorityContainer);
+
+        todoDetailContainer.appendChild(form);
+        
+
         const submit_button = document.createElement('button');
         submit_button.id = 'submit-edit';
         submit_button.textContent = 'Submit';
@@ -90,12 +179,16 @@ function viewDetails(lst, todo) {
 
         submit_button.addEventListener("click", () => {
             submit_edit_buttons.textContent = '';
-            viewDetails(lst, todo);
+            todoDetailContainer.textContent = '';
+            let todoEdit = new todoItem()
+            obj.modifyTodo(todo, todoEdit);
+            viewDetails(obj, todo);
         });
     
         cancel_button.addEventListener("click", () => {
             submit_edit_buttons.textContent = '';
-            viewDetails(lst, todo);
+            todoDetailContainer.textContent = '';
+            viewDetails(obj, todo);
         });
 
     });
