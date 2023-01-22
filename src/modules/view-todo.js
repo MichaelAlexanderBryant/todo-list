@@ -7,11 +7,18 @@ function viewDetails(todo) {
     document.getElementById("blank").style.height = "100vh";
     document.getElementById("popupForm-todo-detail").style.display = "block";
 
-    let projectContainer = document.getElementById("todo-project");
-    let titleContainer = document.getElementById("todo-title");
-    let descriptionContainer = document.getElementById("todo-description");
-    let dateContainer = document.getElementById("todo-date");
-    let priorityContainer = document.getElementById("todo-priority");
+    let todoDetailContainer = document.getElementById("todo-detail-container");
+
+    let projectContainer = document.createElement("div");
+    projectContainer.id = "todo-project";
+    let titleContainer = document.createElement("div");
+    titleContainer.id = "todo-title";
+    let descriptionContainer = document.createElement("div");
+    descriptionContainer.id = "todo-description";
+    let dateContainer = document.createElement("div");
+    dateContainer.id = "todo-date";
+    let priorityContainer = document.createElement("div");
+    priorityContainer.id = "todo-priority";
 
     let projectHeader = document.createElement("div");
     projectHeader.id = "todo-project-header"
@@ -56,6 +63,12 @@ function viewDetails(todo) {
     priorityContainer.appendChild(priorityHeader);
     priorityContainer.appendChild(priorityInfo);
 
+    todoDetailContainer.appendChild(projectContainer);
+    todoDetailContainer.appendChild(titleContainer);
+    todoDetailContainer.appendChild(descriptionContainer);
+    todoDetailContainer.appendChild(dateContainer);
+    todoDetailContainer.appendChild(priorityContainer);
+
     const submit_edit_buttons = document.getElementById("buttons-todo-edit-submit");
     const edit_button = document.createElement('button');
     edit_button.id = 'edit-todo';
@@ -69,6 +82,7 @@ function viewDetails(todo) {
 
     edit_button.addEventListener("click", () => {
         submit_edit_buttons.textContent = '';
+        todoDetailContainer.textContent = '';
         const submit_button = document.createElement('button');
         submit_button.id = 'submit-edit';
         submit_button.textContent = 'Submit';
@@ -91,6 +105,8 @@ function viewDetails(todo) {
     });
 
     close_button.addEventListener("click", () => {
+        submit_edit_buttons.textContent = '';
+        todoDetailContainer.textContent = '';
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm-todo-detail").style.display = "none";
