@@ -10,4 +10,4 @@ displayProjects(theList);
 initializeTodoForm(theList);
 initializeProjectForm(theList);
 initializeFilters(theList);
-initializeViewTodo();
+initializeViewTodo(theList);
