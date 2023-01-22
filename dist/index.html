@@ -74,7 +74,7 @@
                 <label for="description">
                     <strong>Description</strong>
                   </label>
-                  <textarea id="description" name="description" rows="4" cols="50"></textarea>
+                  <textarea id="description" name="description" rows="4" cols="50" value=""></textarea>
               </div>
               <div id="due-date-form">
                 <label for="due-date">
@@ -112,6 +112,36 @@
             <button type="button" id="cancel-button-project" class="btn cancel">Cancel</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+    <div class="popup-todo-detail">
+      <div class="formPopup" id="popupForm-todo-detail">
+        <div id="todo-detail-container">
+          <div id="todo-project"></div>  
+          <div id="todo-title"></div>
+          <div id="todo-date"></div>
+          <div id="todo-description"></div>
+          <div id="todo-priority"></div>
+          <div id="buttons">
+            <button type="button" id="edit-button-todo-detail" class="btn edit">Edit Todo</button>
+            <button type="button" id="cancel-button-todo-detail" class="btn cancel">Close</button>
+          </div>
+        </div>
+        <!-- <form action="" class="formContainer">
+          <h1>Add New Project</h1>
+          <div id="forms-project">
+            <div id="project-name">
+              <label for="project-name">
+                  <strong>Project Name</strong>
+                </label>
+                <input type="text" id="project-name-input" name="project-name" required/>
+            </div>
+          <div id="buttons">
+            <button type="submit" id="submit-button-project" class="btn">Add Project</button>
+            <button type="button" id="cancel-button-project" class="btn cancel">Cancel</button>
+          </div>
+        </form> -->
       </div>
     </div>
     <script src="main.js"></script>

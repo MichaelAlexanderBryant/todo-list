@@ -169,10 +169,11 @@ svg#clipboard {
 }
 
 
-.popup-new-item, .popup-new-project {
+.popup-new-item, .popup-new-project, .popup-todo-detail{
     /* position: relative; */
     text-align: center;
     width: 100%;
+    font-size: 12px;
   }
   .formPopup {
     display: none;
@@ -226,3 +227,26 @@ svg#clipboard {
   .openButton:hover {
     opacity: 1;
   }
+
+
+
+
+
+  #todo-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 50px;
+    max-width: auto;
+    /* padding: 20px; */
+    background-color: #fff;
+  }
+
+  /* #todo-project, #todo-title, #todo-description, #todo-date, #todo-priority {
+  } */
+
+  #todo-project-header, #todo-title-header, #todo-description-header, #todo-date-header, #todo-priority-header {
+    font-weight: bold;
+  }
+

@@ -1,10 +1,9 @@
 import { setFilterToProject } from "./change-filter";
+import { viewDetails } from "./view-todo";
 
 function displayList(lst) {
     const contentArea = document.getElementById("items");
     contentArea.textContent = '';
-
-    console.log(arguments);
     if (lst.length > 1) {
         lst.sort(function(a,b){return new Date(a.dueDate) - new Date(b.dueDate);});
     };
@@ -48,6 +47,9 @@ function displayList(lst) {
         checkboxInput.class = "checkbox";
         checkboxInput.name = "checkbox";
         let infoDiv = document.createElement('div');
+        infoDiv.addEventListener("click", () => {
+            viewDetails(lst[i]);
+        });
         let titleDiv = document.createElement('div');
         titleDiv.className = "task-title";
         titleDiv.textContent = lst[i].title;

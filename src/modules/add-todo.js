@@ -2,6 +2,13 @@ import { todoItem } from "./todo";
 import { displayList } from "./display";
 
 function initializeTodoForm(theList) {
+    document.getElementById("project").value = '';
+    document.getElementById("title").value = '';
+    document.getElementById("description").value = '';
+    document.getElementById("due-date").value = '';
+    document.querySelector("#priority").checked = false;
+
+
     const addTodo = document.getElementById("add-button");
     addTodo.addEventListener("click", () => {
         document.getElementById("container").style.display= "none";
@@ -19,7 +26,7 @@ function initializeTodoForm(theList) {
         document.getElementById("project").value = '';
         let newTitle = document.getElementById("title").value;
         document.getElementById("title").value = '';
-        let newDescription = +document.getElementById("description").value;
+        let newDescription = document.getElementById("description").value;
         document.getElementById("description").value = '';
         let newDueDate = document.getElementById("due-date").value;
         document.getElementById("due-date").value = '';
