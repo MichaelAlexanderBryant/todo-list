@@ -1,3 +1,4 @@
+import { displayList } from "./display";
 import { todoItem } from "./todo";
 
 function viewDetails(obj, todo) {
@@ -94,6 +95,7 @@ function viewDetails(obj, todo) {
         projectLabel.style.fontWeight = 'bold';
         let projectSelect = document.createElement('select');
         projectSelect.id = 'project-input'
+        projectSelect.name = 'project';
         projectSelect.value = todo.project;
         for (let i = 0; i < obj.returnProjects().length; i++) {
             let projectOption = document.createElement('option');
@@ -114,7 +116,8 @@ function viewDetails(obj, todo) {
         titleLabel.style.fontWeight = 'bold';
         let titleInput = document.createElement('input');
         titleInput.type = 'text';
-        titleInput.id = 'title-input'
+        titleInput.name = 'title';
+        titleInput.id = 'title-input';
         titleInput.value = todo.title;
         titleContainer.appendChild(titleLabel);
         titleContainer.appendChild(titleInput);
@@ -127,9 +130,9 @@ function viewDetails(obj, todo) {
         descriptionLabel.for = 'description-input';
         descriptionLabel.textContent = 'Description'
         descriptionLabel.style.fontWeight = 'bold';
-        let descriptionInput = document.createElement('input');
-        descriptionInput.type = 'textarea';
+        let descriptionInput = document.createElement('textarea');
         descriptionInput.id = 'description-input'
+        descriptionInput.name = 'description';
         descriptionInput.value = todo.description;
         descriptionContainer.appendChild(descriptionLabel);
         descriptionContainer.appendChild(descriptionInput);
@@ -144,7 +147,8 @@ function viewDetails(obj, todo) {
         dateLabel.style.fontWeight = 'bold';
         let dateInput = document.createElement('input');
         dateInput.type = 'date';
-        dateInput.id = 'date-input'
+        dateInput.id = 'date-input';
+        dateInput.name = 'date';
         dateInput.value = todo.dueDate;
         dateContainer.appendChild(dateLabel);
         dateContainer.appendChild(dateInput);
@@ -159,7 +163,8 @@ function viewDetails(obj, todo) {
         priorityLabel.style.fontWeight = 'bold';
         let priorityInput = document.createElement('input');
         priorityInput.type = 'checkbox';
-        priorityInput.id = 'priority-input'
+        priorityInput.id = 'priority-input';
+        priorityInput.name = 'priority';
         priorityInput.checked = todo.priority;
         priorityContainer.appendChild(priorityLabel);
         priorityContainer.appendChild(priorityInput);
@@ -180,9 +185,15 @@ function viewDetails(obj, todo) {
         submit_button.addEventListener("click", () => {
             submit_edit_buttons.textContent = '';
             todoDetailContainer.textContent = '';
-            let todoEdit = new todoItem()
+            let todoEditData = new FormData(form);
+            let newProject = todoEditData.get('project');
+            let newTitle = todoEditData.get('title');
+            let newDescription = todoEditData.get('description');
+            let newDate = todoEditData.get('date');
+            let newPriority = todoEditData.get('priority');
+            let todoEdit = new todoItem(newProject, newTitle, newDescription, newDate, newPriority);
             obj.modifyTodo(todo, todoEdit);
-            viewDetails(obj, todo);
+            viewDetails(obj, todoEdit);
         });
     
         cancel_button.addEventListener("click", () => {
@@ -196,6 +207,7 @@ function viewDetails(obj, todo) {
     close_button.addEventListener("click", () => {
         submit_edit_buttons.textContent = '';
         todoDetailContainer.textContent = '';
+        displayList(obj, obj.returnList());
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm-todo-detail").style.display = "none";

@@ -25,13 +25,10 @@ class todoList {
     modifyTodo(item, newItem) {
         for (let i = 0; i < this.allTodoItems.length; i++) {
             if (this.allTodoItems[i] == item) {
+                this.allTodoItems.splice(i,1);
             };
         };
-        // this.allTodoItems[idx].project = project;
-        // this.allTodoItems[idx].title = title;
-        // this.allTodoItems[idx].description = description;
-        // this.allTodoItems[idx].dueDate = dueDate;
-        // this.allTodoItems[idx].priority = priority;
+        this.allTodoItems.push(newItem);
     };
 
     returnProjects() {
