@@ -1,6 +1,6 @@
 import { displayList } from "./display";
 
-function initializeFilters(lst) {
+function initializeFilters(obj) {
     const filterDisplay = document.getElementById('filter');
     const all = document.getElementById('all');
     all.addEventListener("click", () => {
@@ -9,7 +9,7 @@ function initializeFilters(lst) {
         allDiv.id = 'filter-text'
         allDiv.textContent = 'All';
         filterDisplay.appendChild(allDiv);
-        displayList(lst.returnList());
+        displayList(obj, obj.returnList());
     });
 
     const today = document.getElementById('today');
@@ -19,7 +19,7 @@ function initializeFilters(lst) {
         todayDiv.id = 'filter-text'
         todayDiv.textContent = 'Today';
         filterDisplay.appendChild(todayDiv);
-        displayList(lst.returnList());
+        displayList(obj, obj.returnList());
     });
 
     const week = document.getElementById('week');
@@ -29,18 +29,18 @@ function initializeFilters(lst) {
         weekDiv.id = 'filter-text'
         weekDiv.textContent = 'Week';
         filterDisplay.appendChild(weekDiv);
-        displayList(lst.returnList());
+        displayList(obj, obj.returnList());
     });
 };
 
-function setFilterToProject(lst, project) {
+function setFilterToProject(obj, project) {
     const filterDisplay = document.getElementById('filter');
     filterDisplay.textContent = '';
     let projectDiv = document.createElement('div');
     projectDiv.id = 'filter-text'
     projectDiv.textContent = project;
     filterDisplay.appendChild(projectDiv);
-    displayList(lst.returnList());
+    displayList(obj, obj.returnList());
 };
 
 export {initializeFilters, setFilterToProject};

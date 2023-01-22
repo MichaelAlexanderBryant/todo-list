@@ -191,6 +191,7 @@ function viewDetails(obj, todo) {
             let newDescription = todoEditData.get('description');
             let newDate = todoEditData.get('date');
             let newPriority = todoEditData.get('priority');
+            newPriority = (newPriority=='on');
             let todoEdit = new todoItem(newProject, newTitle, newDescription, newDate, newPriority);
             obj.modifyTodo(todo, todoEdit);
             viewDetails(obj, todoEdit);
