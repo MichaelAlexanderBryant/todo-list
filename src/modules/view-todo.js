@@ -1,101 +1,5 @@
-
 function initializeViewTodo(lst) {
-    const submit_edit_buttons = document.getElementById("buttons-todo-edit-submit");
-    submit_edit_buttons.style.display = 'none';
-    const edit_buttons = document.getElementById('buttons-todo-edit');
 
-    const edit = document.getElementById('edit-button-todo-detail');
-    edit.addEventListener("click", () => {
-        submit_edit_buttons.style.display = 'block';
-        edit_buttons.style.display = 'none';
-        
-        let project = document.getElementById("todo-project-info");
-        let title = document.getElementById("todo-title-info");
-        let description = document.getElementById("todo-description-info");
-        let date = document.getElementById("todo-date-info");
-        let priority = document.getElementById("todo-priority-info");
-
-        let projectText = project.textContent;
-        let titleText = title.textContent;
-        let descriptionText = description.textContent;
-        let dateText = date.textContent;
-        let priorityText = priority.textContent;
-
-        let projectForm = document.createElement('form');
-        project.textContent = '';
-        let projectEdit = document.createElement('select');
-        projectEdit.id = 'project-edit';
-        for (let i = 0; i < lst.returnProjects().length; i++){
-            let projectOption = document.createElement('option');
-            projectOption.value = lst.returnProjects()[i];
-            projectOption.textContent = lst.returnProjects()[i];
-            projectEdit.appendChild(projectOption);
-        };
-        projectEdit.name = 'project-edited'
-        projectEdit.value = projectText;
-        projectForm.appendChild(projectEdit);
-        project.appendChild(projectForm);
-        let titleForm = document.createElement('form');
-        title.textContent = '';
-        let titleEdit = document.createElement('input');
-        titleEdit.id = 'title-edit';
-        titleEdit.type = 'text';
-        titleEdit.name = 'title-edited'
-        titleEdit.value = titleText;
-        titleForm.appendChild(titleEdit);
-        title.appendChild(titleForm);
-        let descriptionForm = document.createElement('form');
-        description.textContent = '';
-        let descriptionEdit = document.createElement('textarea');
-        descriptionEdit.id = 'description-edit';
-        descriptionEdit.name = 'description-edited'
-        descriptionEdit.value = descriptionText;
-        descriptionEdit.rows = "4";
-        descriptionEdit.cols = "25";
-        descriptionForm.appendChild(descriptionEdit);
-        description.appendChild(descriptionForm);
-        let dateForm = document.createElement('form');
-        date.textContent = '';
-        let dateEdit = document.createElement('input');
-        dateEdit.id = 'date-edit';
-        dateEdit.type = 'date';
-        dateEdit.name = 'date-edited'
-        dateEdit.value = dateText;
-        dateForm.appendChild(dateEdit);
-        date.appendChild(dateForm);
-        let priorityForm = document.createElement('form');
-        priority.textContent = '';
-        let priorityEdit = document.createElement('input');
-        priorityEdit.id = 'priority-edit';
-        priorityEdit.type = 'checkbox';
-        priorityEdit.name = 'priority-edited'
-        priorityEdit.checked = priorityText;
-        priorityForm.appendChild(priorityEdit);
-        priority.appendChild(priorityForm);
-    });
-    const close = document.getElementById('close-button-todo-detail');
-    close.addEventListener("click", () => {
-        document.getElementById("todo-project").textContent = '';
-        document.getElementById("todo-title").textContent = '';
-        document.getElementById("todo-description").textContent = '';
-        document.getElementById("todo-date").textContent = '';
-        document.getElementById("todo-priority").textContent = '';
-        document.getElementById("container").style.display= "grid";
-        document.getElementById("blank").style.height = "0vh";
-        document.getElementById("popupForm-todo-detail").style.display = "none";
-    });
-
-    const submit_edit = document.getElementById("submit-button-todo-detail");
-    submit_edit.addEventListener("click", () => {
-        submit_edit_buttons.style.display = 'none';
-        edit_buttons.style.display = 'block';
-    });
-
-    const cancel_edit = document.getElementById("cancel-button-todo-detail");
-    cancel_edit.addEventListener("click", () => {
-        submit_edit_buttons.style.display = 'none';
-        edit_buttons.style.display = 'block';
-    });
 }
 
 function viewDetails(todo) {
@@ -151,6 +55,46 @@ function viewDetails(todo) {
     dateContainer.appendChild(dateInfo);
     priorityContainer.appendChild(priorityHeader);
     priorityContainer.appendChild(priorityInfo);
+
+    const submit_edit_buttons = document.getElementById("buttons-todo-edit-submit");
+    const edit_button = document.createElement('button');
+    edit_button.id = 'edit-todo';
+    edit_button.textContent = "Edit";
+    const close_button = document.createElement('button');
+    close_button.id = 'close-todo';
+    close_button.textContent = "Close";
+
+    submit_edit_buttons.appendChild(edit_button);
+    submit_edit_buttons.appendChild(close_button);
+
+    edit_button.addEventListener("click", () => {
+        submit_edit_buttons.textContent = '';
+        const submit_button = document.createElement('button');
+        submit_button.id = 'submit-edit';
+        submit_button.textContent = 'Submit';
+        const cancel_button = document.createElement('button');
+        cancel_button.id = 'cancel_edit';
+        cancel_button.textContent = 'Cancel';
+        submit_edit_buttons.appendChild(submit_button);
+        submit_edit_buttons.appendChild(cancel_button);
+
+        submit_button.addEventListener("click", () => {
+            submit_edit_buttons.textContent = '';
+            viewDetails(todo);
+        });
+    
+        cancel_button.addEventListener("click", () => {
+            submit_edit_buttons.textContent = '';
+            viewDetails(todo);
+        });
+
+    });
+
+    close_button.addEventListener("click", () => {
+        document.getElementById("container").style.display= "grid";
+        document.getElementById("blank").style.height = "0vh";
+        document.getElementById("popupForm-todo-detail").style.display = "none";
+    });
 };
 
 export {initializeViewTodo, viewDetails};

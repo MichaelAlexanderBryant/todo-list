@@ -250,3 +250,6 @@ svg#clipboard {
     font-weight: bold;
   }
 
+  #buttons-todo-edit-submit, #buttons-todo-edit {
+    background-color: white;
+  }

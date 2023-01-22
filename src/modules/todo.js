@@ -22,6 +22,14 @@ class todoList {
         this.allTodoItems.push(item);
     };
 
+    modifyTodo(idx, project, title, description, dueDate, priority) {
+        this.allTodoItems[idx].project = project;
+        this.allTodoItems[idx].title = title;
+        this.allTodoItems[idx].description = description;
+        this.allTodoItems[idx].dueDate = dueDate;
+        this.allTodoItems[idx].priority = priority;
+    }
+
     returnProjects() {
         return this.allProjects;
     };
