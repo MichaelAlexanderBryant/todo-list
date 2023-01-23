@@ -1,0 +1,261 @@
+#blank {
+  background-color:#cccccc;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 13fr;
+    font-size: 8px;
+}
+
+#header {
+    grid-row: 1 / 2;
+    background-color: #db4d3e;
+    color: #fcf3f3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header > #left-header-container {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+#header > #right-header-container {
+    padding-right: 40px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+svg#clipboard {
+    padding-left: 10px;
+}
+
+#add-button-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#add-button-container:hover {
+  background-color: #b3abab6b;
+  border-radius: 5px;
+}
+
+#content {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    color: #242424;
+}
+
+#content > #project-sidebar {
+    grid-column: 1 / 2;
+    background-color: #fafafa;
+
+}
+
+#filter-container {
+  padding: 0px 20px;
+  font-size: 8px;
+}
+
+.filter {
+  flex: 1;
+  border-radius: 5px;
+  padding: 0px 20px;
+}
+
+.day {
+  padding: 10px 20px;
+}
+
+.filter:hover, .project-list-item:hover, .delete-project:hover {
+  background-color: #cccccc;
+}
+
+#add-projects-header {
+  padding-left: 10px;
+}
+
+#projects-container {
+  display: flex;
+  align-items: center;
+}
+
+#add-project {
+  display: flex;
+  align-items: center;
+}
+
+#project-list {
+  font-size: 12px;
+  padding: 10px 0px 0px 0px;
+  border-radius: 5px;
+}
+
+.project-and-remove {
+  border-radius: 5px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 55px;
+}
+
+.project-list-item {
+  grid-column: 1 / 2;
+  border-radius: 5px;
+  padding: 10px 0px 10px 10px;
+}
+
+.delete-project {
+  grid-column: 2 / 3;
+  color: #db4d3e;
+  font-size: .75em;
+  border-radius: 5px;
+  padding: 10px 0px 10px 10px;
+}
+
+#content > #todo-list {
+    grid-column: 2 / 3;
+    background-color: #fefefe;
+    color: #242424;
+    display: flex;
+    justify-content: center;
+}
+
+#filter {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#filter > div {
+  padding: 25px 45px 0px 25px ;
+}
+
+#todo-list-container {
+  width: 60%;
+}
+
+.item {
+  display:grid;
+  border-bottom: 1px solid #b2b7b6;
+  grid-template-columns: 1fr 9fr 1fr;
+  padding: 25px 0px;
+  font-size: 12px;
+}
+
+.task-due-date {
+  color: #71b87d;
+}
+
+.urgent {
+  border-bottom: 1px solid #dd4c3d;
+  background-color: #dd4d3d38;
+}
+
+.checkbox {
+  grid-column: 1 / 2;
+}
+
+.info {
+  grid-column: 2 / 3;
+}
+
+.task-project {
+  grid-column: 3 / 4;
+}
+
+
+.popup-new-item, .popup-new-project, .popup-todo-detail{
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+  }
+  .formPopup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+  }
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 50px;
+    max-width: auto;
+    background-color: #fff;
+  }
+
+  .formContainer h1 {
+    margin-bottom: -10px;
+  }
+
+  #forms, #forms-project {
+    display:flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  #project-form, #title-form, #description-form, textarea, #due-date-form, #project-name{
+    display:flex;
+    flex-direction: column;
+  }
+
+  .formContainer .btn {
+    padding: 12px 20px;
+    border: none;
+    background-color: #8ebf42;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+    opacity: 0.8;
+  }
+  .formContainer .cancel {
+    background-color: #cc0000;
+  }
+  .formContainer .btn:hover,
+  .openButton:hover {
+    opacity: 1;
+  }
+
+
+
+  
+
+  #todo-detail-container, #todo-item-edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 50px;
+    max-width: auto;
+    background-color: #fff;
+  }
+
+  #todo-project-header, #todo-title-header, #todo-description-header, #todo-date-header, #todo-priority-header {
+    font-weight: bold;
+  }
+
+  #buttons-todo-edit-submit, #buttons-todo-edit {
+    background-color: white;
+  }
+
+  .form-edit {
+    display: flex;
+    flex-direction: column;
+  }
