@@ -103,9 +103,10 @@ function viewDetails(obj, todo) {
         projectSelect.value = todo.project;
         for (let i = 0; i < obj.returnProjects().length; i++) {
             let projectOption = document.createElement('option');
-            projectOption.value = obj.returnProjects()[i]
-            projectOption.textContent = obj.returnProjects()[i]
-            projectSelect.appendChild(projectOption)
+            projectOption.value = obj.returnProjects()[i];
+            projectOption.textContent = obj.returnProjects()[i];
+            projectOption.selected = obj.returnProjects()[i] == todo.project;
+            projectSelect.appendChild(projectOption);
         };
         projectContainer.appendChild(projectLabel);
         projectContainer.appendChild(projectSelect);
@@ -181,10 +182,10 @@ function viewDetails(obj, todo) {
         submitButton.id = 'submit-edit';
         submitButton.textContent = 'Submit';
         const cancelButton = document.createElement('button');
-        cancelButton.id = 'cancel_edit';
+        cancelButton.id = 'cancel-edit';
         cancelButton.textContent = 'Cancel';
-        buttons.appendChild(submit_button);
-        buttons.appendChild(cancel_button);
+        buttons.appendChild(submitButton);
+        buttons.appendChild(cancelButton);
 
         submitButton.addEventListener("click", () => {
             buttons.textContent = '';
