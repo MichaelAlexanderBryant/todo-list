@@ -87,16 +87,30 @@ function displayProjects(obj) {
         projectOption.textContent = obj.returnProjects()[i];
         projectForm.appendChild(projectOption);
         if (obj.returnProjects()[i] != "N/A") {
+            let projectContainer = document.createElement('div');
+            projectContainer.className = "project-and-remove"
             let projectItem = document.createElement('div');
-            let projectItemSpan = document.createElement('span');
+            let projectItemSpan = document.createElement('div');
             projectItem.className = "project-list-item";
             projectItemSpan.textContent = obj.returnProjects()[i];
+            projectItem.appendChild(projectItemSpan);
+            let projectItemDelete = document.createElement('div');
+            projectItemDelete.className = "delete-project";
+            projectItemDelete.textContent = "(remove)";
+            projectItemDelete.addEventListener("click", () => {
+                obj.removeProject(obj.returnProjects()[i]);
+                obj.storeInLocalStorage("project");
+                displayProjects(obj);
+                setFilterToProject(obj, "All");
+                // displayList(obj, obj.returnList());
+            });
             projectItem.addEventListener("click", () => {
                 setFilterToProject(obj, obj.returnProjects()[i]);
                 displayList(obj, obj.returnList(), obj.returnProjects()[i]);
             });
-            projectItem.appendChild(projectItemSpan);
-            projectSidebar.appendChild(projectItem);
+            projectContainer.appendChild(projectItem);
+            projectContainer.appendChild(projectItemDelete);
+            projectSidebar.appendChild(projectContainer);
         };
     };
     document.getElementById("project").value = '';

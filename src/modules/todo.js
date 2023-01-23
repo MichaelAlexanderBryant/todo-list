@@ -76,10 +76,6 @@ class todoList {
         };
     };
 
-    retrieveTodos() {
-
-    };
-
     returnProjects() {
         return this.allProjects;
     };
@@ -88,9 +84,18 @@ class todoList {
         this.allProjects.push(project);
     };
 
+    removeProject(project) {
+        for (let i = 0; i < this.allProjects.length; i++) {
+            if (this.allProjects[i] == project){
+                this.allProjects.splice(i,1);
+            };
+        };
+    };
+
     sortProjects() {
         this.allProjects.sort();
     };
+
 };
 
 export {todoItem, todoList};
