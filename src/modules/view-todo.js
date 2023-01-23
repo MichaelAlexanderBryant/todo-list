@@ -199,6 +199,7 @@ function viewDetails(obj, todo) {
             newPriority = (newPriority=='on');
             let todoEdit = new todoItem(newProject, newTitle, newDescription, newDate, newPriority);
             obj.modifyTodo(todo, todoEdit);
+            obj.storeInLocalStorage("todo");
             viewDetails(obj, todoEdit);
         });
     
@@ -214,6 +215,7 @@ function viewDetails(obj, todo) {
         buttons.textContent = '';
         todoDetailContainer.textContent = '';
         obj.deleteTodo(todo);
+        obj.storeInLocalStorage("todo");
         displayList(obj, obj.returnList());
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";

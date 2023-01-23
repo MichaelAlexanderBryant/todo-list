@@ -1,7 +1,7 @@
 import { todoItem } from "./todo";
 import { displayList } from "./display";
 
-function initializeTodoForm(theList) {
+function initializeTodoForm(obj) {
     document.getElementById("project").value = '';
     document.getElementById("title").value = '';
     document.getElementById("description").value = '';
@@ -33,8 +33,9 @@ function initializeTodoForm(theList) {
         let newPriority = document.querySelector("#priority").checked;
         document.querySelector("#priority").checked = false;
         let newTodo = new todoItem(newProject, newTitle, newDescription, newDueDate, newPriority);
-        theList.insertTodo(newTodo);
-        displayList(theList, theList.returnList());
+        obj.insertTodo(newTodo);
+        obj.storeInLocalStorage("todo");
+        displayList(obj, obj.returnList());
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
         document.getElementById("popupForm").style.display = "none";

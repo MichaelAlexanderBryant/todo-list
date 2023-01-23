@@ -17,6 +17,7 @@ function initializeProjectForm(obj) {
         let newProjectName = document.getElementById("project-name-input").value;
         document.getElementById("project-name-input").value = '';
         obj.insertProject(newProjectName);
+        obj.storeInLocalStorage("project")
         displayProjects(obj);
         document.getElementById("container").style.display= "grid";
         document.getElementById("blank").style.height = "0vh";
